@@ -1,24 +1,31 @@
 /* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
-import Container from './styles'
+import Container, { Notification } from './styles'
+import Navbar from '../navbar'
+import Sidebar from './sidebar'
+
 import {
   FiSearch,
   FiBell,
-  FiSettings,
   FiChevronDown,
   FiUser,
   FiLock,
   FiLogOut
 } from 'react-icons/fi'
 
+import { HiArrowNarrowRight } from 'react-icons/hi'
+
 import logo from '../../assets/images/header-images/logo.png'
 import kallarari from '../../assets/images/header-images/kallarari.png'
-import Navbar from '../navbar'
+import karenRobinson from '../../assets/images/header-images/karen-robinson.png'
 
 interface Props {
   username: string
   profilePic: string
+  notificationPic: string
   message: string
+  notification: string
+  timeAgo: string
 }
 
 const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
@@ -29,11 +36,36 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
   const handleNotificationsClick = () =>
     setOpenNotifications(!openNotifications)
 
-  const notification = [
+  const notifications = [
     {
-      username: 'Minosso',
-      profilePic: kallarari,
+      username: 'Cristina Pride',
+      notificationPic: kallarari,
       message: 'Hi, How are you? What about our next meeting'
+    },
+    {
+      notification: 'Caleb Flakelar commented on Admin',
+      notificationPic: kallarari,
+      timeAgo: '1 min ago'
+    },
+    {
+      username: 'Karen Robinson',
+      notificationPic: karenRobinson,
+      message: 'Wow ! this admin looks good and awesome design'
+    },
+    {
+      notification: 'New user registered.',
+      notificationPic: kallarari,
+      timeAgo: '5 hours ago'
+    },
+    {
+      notification: 'Caleb Flakelar commented on Admin',
+      notificationPic: kallarari,
+      timeAgo: '4 days ago'
+    },
+    {
+      notification: 'Carlos Crouch liked Admin',
+      notificationPic: kallarari,
+      timeAgo: '13 days ago'
     }
   ]
 
@@ -105,27 +137,44 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
                   <h4>Notification</h4>
                   <h6>Clear All</h6>
                 </div>
-                {notification.map(({ username, profilePic, message }) => (
-                  <div className="notification">
-                    <img
-                      src={profilePic}
-                      alt="blabla"
-                      className="profile-pic"
-                    />
-                    <div className="notification-text">
-                      <h6>{username}</h6>
-                      <p>{message}</p>
-                    </div>
-                  </div>
-                ))}
-                {/* <div className="view-all">
-                  <h5>View all</h5>
-                </div> */}
+
+                <div className="notification-items">
+                  {notifications.map(
+                    ({
+                      username,
+                      notificationPic,
+                      message,
+                      notification,
+                      timeAgo
+                    }) => (
+                      <Notification username={username}>
+                        <img
+                          src={notificationPic}
+                          alt="Foto de perfil do usuário"
+                          className="profile-pic"
+                        />
+                        <div className="notification-text">
+                          <h6>{username}</h6>
+                          <p>{message}</p>
+                        </div>
+
+                        <div className="notification-text">
+                          <h6>{notification}</h6>
+                          <p>{timeAgo}</p>
+                        </div>
+                      </Notification>
+                    )
+                  )}
+                </div>
+                <div className="view-all">
+                  <p>View all</p>
+                  <HiArrowNarrowRight className="arrow-icon" />
+                </div>
               </div>
             )}
 
-            <div className="settings-icon">
-              <FiSettings className="icon" />
+            <div className="wheel-icon">
+              <Sidebar />
             </div>
           </div>
         </div>
