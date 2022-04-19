@@ -260,11 +260,10 @@ const Container = styled.div`
   }
 `
 
-export const Notification = styled.div.attrs(props => ({
-  username: 'text'
-}))`
+export const Notification = styled.div`
+  display: flex;
+  margin-bottom: 10px;
   .notification {
-    display: ${props => (props.username ? 'flex' : 'none')};
     align-items: flex-start;
     padding: 12px 20px;
     height: min-content;

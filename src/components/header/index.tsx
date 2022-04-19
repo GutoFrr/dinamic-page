@@ -19,16 +19,7 @@ import logo from '../../assets/images/header-images/logo.png'
 import kallarari from '../../assets/images/header-images/kallarari.png'
 import karenRobinson from '../../assets/images/header-images/karen-robinson.png'
 
-interface Props {
-  username: string
-  profilePic: string
-  notificationPic: string
-  message: string
-  notification: string
-  timeAgo: string
-}
-
-const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
+const Header: React.FC = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const handleMenuClick = () => setOpenMenu(!openMenu)
 
@@ -40,32 +31,38 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
     {
       username: 'Cristina Pride',
       notificationPic: kallarari,
-      message: 'Hi, How are you? What about our next meeting'
+      message: 'Hi, How are you? What about our next meeting',
+      isMessage: true
     },
     {
       notification: 'Caleb Flakelar commented on Admin',
       notificationPic: kallarari,
-      timeAgo: '1 min ago'
+      timeAgo: '1 min ago',
+      isMessage: false
     },
     {
       username: 'Karen Robinson',
       notificationPic: karenRobinson,
-      message: 'Wow ! this admin looks good and awesome design'
+      message: 'Wow ! this admin looks good and awesome design',
+      isMessage: true
     },
     {
       notification: 'New user registered.',
       notificationPic: kallarari,
-      timeAgo: '5 hours ago'
+      timeAgo: '5 hours ago',
+      isMessage: false
     },
     {
       notification: 'Caleb Flakelar commented on Admin',
       notificationPic: kallarari,
-      timeAgo: '4 days ago'
+      timeAgo: '4 days ago',
+      isMessage: false
     },
     {
       notification: 'Carlos Crouch liked Admin',
       notificationPic: kallarari,
-      timeAgo: '13 days ago'
+      timeAgo: '13 days ago',
+      isMessage: false
     }
   ]
 
@@ -93,12 +90,8 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
               className={`username ${openMenu ? 'active' : 'inactive'}`}
               onClick={handleMenuClick}
             >
-              <img
-                src={profilePic}
-                alt="Foto de Perfil"
-                className="profile-pic"
-              />
-              <h6>{username}</h6>
+              <img src="" alt="Foto de Perfil" className="profile-pic" />
+              <h6></h6>
               <FiChevronDown
                 className={`arrow-icon icon ${
                   openMenu ? 'active' : 'inactive'
@@ -139,32 +132,23 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
                 </div>
 
                 <div className="notification-items">
-                  {notifications.map(
-                    ({
-                      username,
-                      notificationPic,
-                      message,
-                      notification,
-                      timeAgo
-                    }) => (
-                      <Notification username={username}>
+                  {notifications.map(item => (
+                    <>
+                      <Notification>
                         <img
-                          src={notificationPic}
+                          src={item.notificationPic}
                           alt="Foto de perfil do usuário"
                           className="profile-pic"
                         />
                         <div className="notification-text">
-                          <h6>{username}</h6>
-                          <p>{message}</p>
-                        </div>
-
-                        <div className="notification-text">
-                          <h6>{notification}</h6>
-                          <p>{timeAgo}</p>
+                          <h6>
+                            {item.isMessage ? item.username : item.notification}
+                          </h6>
+                          <p>{item.isMessage ? item.message : item.timeAgo}</p>
                         </div>
                       </Notification>
-                    )
-                  )}
+                    </>
+                  ))}
                 </div>
                 <div className="view-all">
                   <p>View all</p>
