@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
 import Container from './styles'
 
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = () => {
-  const [openMenu, setOpenMenu] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   const menuArray = [
     {
@@ -168,10 +169,19 @@ const Navbar: React.FC<Props> = () => {
 
   return (
     <Container>
-      <div>
-        <ul>
-          <li></li>
-        </ul>
+      <div className="navbar">
+        {menuArray.map((item, e) => (
+          <ul className="menu-items">
+            {item.menuItems}
+
+            <li
+              onMouseEnter={() => setShowMenu(true)}
+              onMouseLeave={() => setShowMenu(false)}
+            >
+              {showMenu && <div>AAAAAAa</div>}
+            </li>
+          </ul>
+        ))}
       </div>
     </Container>
   )

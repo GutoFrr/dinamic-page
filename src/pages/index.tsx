@@ -15,7 +15,13 @@ const Home: React.FC = () => {
         <title>Dinamic Page</title>
       </Head>
 
-      <Header username={name} profilePic={kallarari} />
+      <Header
+        username={name}
+        profilePic={kallarari}
+        message={''}
+        notification={''}
+        timeAgo={''}
+      />
     </Container>
   )
 }

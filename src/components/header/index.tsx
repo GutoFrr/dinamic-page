@@ -4,13 +4,11 @@ import Container from './styles'
 import {
   FiSearch,
   FiBell,
-  FiSettings,
   FiChevronDown,
   FiUser,
   FiLock,
   FiLogOut
 } from 'react-icons/fi'
-
 import { HiArrowNarrowRight } from 'react-icons/hi'
 
 import logo from '../../assets/images/header-images/logo.png'
