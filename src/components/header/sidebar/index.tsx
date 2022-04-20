@@ -9,7 +9,7 @@ interface ItemProps {
 }
 
 const Sidebar: React.FC<ItemProps> = () => {
-  const [openSidebar, setOpenSidebar] = useState(true)
+  const [openSidebar, setOpenSidebar] = useState(false)
   const handleClickSidebar = () => setOpenSidebar(!openSidebar)
 
   return (

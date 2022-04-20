@@ -14,7 +14,9 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = () => {
-  const [openMenu, setOpenMenu] = useState<Props[]>([
+  const [openMenu, setOpenMenu] = useState(false)
+
+  const menuArray = [
     {
       menuItems: 'Dashboard',
       active: false,
@@ -162,7 +164,7 @@ const Navbar: React.FC<Props> = () => {
       active: true,
       open: false
     }
-  ])
+  ]
 
   return (
     <Container>

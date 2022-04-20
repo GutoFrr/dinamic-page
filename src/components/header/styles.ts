@@ -153,6 +153,44 @@ const Container = styled.div`
         border-radius: 12px;
       }
     }
+
+    .notification {
+      display: flex;
+      align-items: flex-start;
+      padding: 12px 20px;
+      height: min-content;
+      cursor: pointer;
+
+      &:hover {
+        background: #f7f7f7;
+      }
+
+      h6 {
+        color: #343a40;
+        font: 14.4px 'Roboto', sans-serif;
+        margin-bottom: 5px;
+        max-width: 230px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+          overflow: visible;
+        }
+      }
+
+      p {
+        color: #98a6ad;
+        white-space: normal;
+        font-size: 12px;
+        font-family: 'Roboto', sans-serif;
+        line-height: 16px;
+      }
+    }
+
+    .notification-text {
+      margin-left: 10px;
+    }
   }
 
   .profile-pic {
@@ -257,48 +295,6 @@ const Container = styled.div`
     height: 22px;
     cursor: pointer;
     color: ${props => props.theme.lightcolors.headerText};
-  }
-`
-
-export const Notification = styled.div.attrs(props => ({
-  username: 'text'
-}))`
-  .notification {
-    display: ${props => (props.username ? 'flex' : 'none')};
-    align-items: flex-start;
-    padding: 12px 20px;
-    height: min-content;
-    cursor: pointer;
-
-    &:hover {
-      background: #f7f7f7;
-    }
-
-    h6 {
-      color: #343a40;
-      font: 14.4px 'Roboto', sans-serif;
-      margin-bottom: 5px;
-      max-width: 230px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      &:hover {
-        overflow: visible;
-      }
-    }
-
-    p {
-      color: #98a6ad;
-      white-space: normal;
-      font-size: 12px;
-      font-family: 'Roboto', sans-serif;
-      line-height: 16px;
-    }
-  }
-
-  .notification-text {
-    margin-left: 10px;
   }
 `
 

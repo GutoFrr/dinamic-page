@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-key */
 import React, { useState } from 'react'
-import Container, { Notification } from './styles'
-import Navbar from '../navbar'
-import Sidebar from './sidebar'
-
+import Container from './styles'
 import {
   FiSearch,
   FiBell,
+  FiSettings,
   FiChevronDown,
   FiUser,
   FiLock,
@@ -18,11 +16,12 @@ import { HiArrowNarrowRight } from 'react-icons/hi'
 import logo from '../../assets/images/header-images/logo.png'
 import kallarari from '../../assets/images/header-images/kallarari.png'
 import karenRobinson from '../../assets/images/header-images/karen-robinson.png'
+import Navbar from '../navbar'
+import Sidebar from './sidebar'
 
 interface Props {
   username: string
   profilePic: string
-  notificationPic: string
   message: string
   notification: string
   timeAgo: string
@@ -39,32 +38,32 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
   const notifications = [
     {
       username: 'Cristina Pride',
-      notificationPic: kallarari,
+      profilePic: kallarari,
       message: 'Hi, How are you? What about our next meeting'
     },
     {
       notification: 'Caleb Flakelar commented on Admin',
-      notificationPic: kallarari,
+      profilePic: kallarari,
       timeAgo: '1 min ago'
     },
     {
       username: 'Karen Robinson',
-      notificationPic: karenRobinson,
+      profilePic: karenRobinson,
       message: 'Wow ! this admin looks good and awesome design'
     },
     {
       notification: 'New user registered.',
-      notificationPic: kallarari,
+      profilePic: kallarari,
       timeAgo: '5 hours ago'
     },
     {
       notification: 'Caleb Flakelar commented on Admin',
-      notificationPic: kallarari,
+      profilePic: kallarari,
       timeAgo: '4 days ago'
     },
     {
       notification: 'Carlos Crouch liked Admin',
-      notificationPic: kallarari,
+      profilePic: kallarari,
       timeAgo: '13 days ago'
     }
   ]
@@ -142,14 +141,14 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
                   {notifications.map(
                     ({
                       username,
-                      notificationPic,
+                      profilePic,
                       message,
                       notification,
                       timeAgo
                     }) => (
-                      <Notification username={username}>
+                      <div className="notification">
                         <img
-                          src={notificationPic}
+                          src={profilePic}
                           alt="Foto de perfil do usuário"
                           className="profile-pic"
                         />
@@ -158,11 +157,11 @@ const Header: React.FC<Props> = ({ username, profilePic }: Props) => {
                           <p>{message}</p>
                         </div>
 
-                        <div className="notification-text">
+                        <div>
                           <h6>{notification}</h6>
                           <p>{timeAgo}</p>
                         </div>
-                      </Notification>
+                      </div>
                     )
                   )}
                 </div>
